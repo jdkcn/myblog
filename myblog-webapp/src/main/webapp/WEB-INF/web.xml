@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="antlogistics" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>Myblog 2.0</display-name>
+
+    <description>Simple Java blog</description>
+
+    <listener>
+        <listener-class>com.jdkcn.myblog.web.listener.MyblogServletContextListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>Character encoding filter</filter-name>
+        <filter-class>com.jdkcn.myblog.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>Guice Filter</filter-name>
+        <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Character encoding filter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+	<filter-mapping>
+		<filter-name>Guice Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jspx</welcome-file>
+    </welcome-file-list>
+</web-app>

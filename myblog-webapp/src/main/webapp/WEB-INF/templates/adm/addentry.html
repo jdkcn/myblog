@@ -1,0 +1,49 @@
+<html>
+<head>
+	@Require
+	<script type="text/javascript" charset="utf-8" src="/kindeditor/kindeditor.js?ver=3.5.4"></script>
+	@Require
+	<script>
+			KE.show({
+				id : 'content',
+				afterCreate : function(id) {
+					KE.event.ctrl(document, 13, function() {
+						KE.sync(id);
+						//document.forms['example'].submit();
+					});
+					KE.event.ctrl(KE.g[id].iframeDoc, 13, function() {
+						KE.sync(id);
+						//document.forms['example'].submit();
+					});
+				}
+			});
+	</script>
+</head>
+<body>
+		<div class="innertube">
+			<h2>Add Entry</h2>
+			<form action="/adm/entry/add" method="post">
+			<fieldset>
+				<legend>Entry info</legend>
+				<input type="hidden" name="blogId" value="${blog.id}"/>
+				<div>
+					<label>Title</label>
+					<input id="title" name="entry.title" type="text" value="" />
+				</div>
+				<div>
+					<label>Name</label>
+					<input id="name" name="entry.name" type="text" value="" />
+				</div>
+				<div>
+					<label>Content</label>
+					<textarea rows="10" cols="50" id="content" style="width:700px;height:300px;" name="entry.content">
+					</textarea>
+				</div>
+				<div>
+					<input type="submit" value="Add" />
+				</div>
+			</fieldset>
+			</form>
+		</div>
+</body>
+</html>

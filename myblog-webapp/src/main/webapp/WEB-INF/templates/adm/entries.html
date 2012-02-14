@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+		<div class="innertube">
+			<h2>Entries</h2>
+			<table>
+				<tr>
+					<td>Title</td><td>Author</td><td>Categories</td><td>Tags</td><td>Date</td>
+				</tr>
+				@Repeat(items=entries, var="entry")
+				<tr>
+					<td>${entry.title}</td><td>${entry.author.nickname}</td><td>Categories</td><td>Tags</td><td>Date</td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>
