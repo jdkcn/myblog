@@ -24,13 +24,26 @@
             <property name="hibernate.connection.username" value="postgres"/>
             <property name="hibernate.connection.password" value="postgres"/>
             <property name="hibernate.connection.pool_size" value="5"/>
+            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.cache.provider_class" value="net.sf.ehcache.hibernate.SingletonEhCacheProvider" />
+            <property name="hibernate.cache.region.factory_class" value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory" />
             <property name="hibernate.cache.use_query_cache" value="true" />
             <property name="hibernate.cache.use_second_level_cache" value="true" />
+            
+            <!-- c3p0 config -->
+	        <property name="connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider"/>        
+	        <property name="hibernate.c3p0.acquire_increment" value="1"/>
+	        <property name="hibernate.c3p0.idle_test_period" value="3600"/>
+	        <property name="hibernate.c3p0.min_size" value="2"/>
+	        <property name="hibernate.c3p0.max_size" value="20"/>
+	        <property name="hibernate.c3p0.max_statements" value="50"/>
+	        <property name="hibernate.c3p0.timeout" value="0"/>
+	        <property name="hibernate.c3p0.acquireRetryAttempts" value="-1"/>
+	        <property name="hibernate.c3p0.acquireRetryDelay" value="250"/>
+            
         </properties>
     </persistence-unit>
 
