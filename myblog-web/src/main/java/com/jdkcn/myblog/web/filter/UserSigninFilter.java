@@ -25,81 +25,39 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.jdkcn.myblog.web.page;
+package com.jdkcn.myblog.web.filter;
 
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
+import com.google.inject.Singleton;
 
-import com.google.inject.Inject;
-import com.google.sitebricks.Show;
-import com.google.sitebricks.http.Get;
-import com.google.sitebricks.http.Post;
-import com.jdkcn.myblog.domain.User;
-import com.jdkcn.myblog.service.UserService;
-import com.jdkcn.myblog.web.filter.UserLoginFilter;
+import static com.jdkcn.myblog.Constants.*;
 
 /**
- * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
- * @version $Id: Login.java 413 2011-05-04 13:36:16Z rory.cn $
+ * @author <a href="mailto:rory.cn@gmail.com">Rory, Ye</a>
+ * @since May 1, 2010 3:23:01 PM
+ * @version $Id: UserLoginFilter.java 413 2011-05-04 13:36:16Z rory.cn $
  */
-@Show("/WEB-INF/templates/login.html")
-public class Login {
-	
-	@Inject
-	private UserService userService;
-	
-	private String username;
-	
-	private String password;
-	
-	private String errorMessage;
-	
-	@Inject
-	private HttpSession session;
-	
-	public String getErrorMessage() {
-		return errorMessage;
-	}
+@Singleton
+public class UserSigninFilter extends OncePerRequestFilter{
 
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	@Get
-	public void get() {
-
-	}
-
-	@Post
-	public String doLogin() {
-		if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
-			errorMessage = "Username and Password is required";
-			return "/login";
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute(CURRENT_USER) == null) {
+			response.sendRedirect(request.getContextPath() + "/signin");
+			return;
 		}
-		User user = userService.getByUsername(username);
-		if (user != null && user.getPassword().equals(password)) {
-			session.setAttribute(UserLoginFilter.CURRENT_USER, user);
-			return "/adm";
-		}
-		errorMessage = "bad Username or Password";
-		return "/login";
+		filterChain.doFilter(request, response);
+		
 	}
-
 }

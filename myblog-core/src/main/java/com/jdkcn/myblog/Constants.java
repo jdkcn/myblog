@@ -41,4 +41,9 @@ public final class Constants {
      * The default blog's default page size is {@code 20}
      */
     public static final int DEFAULT_PAGE_SIZE = 20;
+    
+    /**
+     * The sign in user's key
+     */
+	public static final String CURRENT_USER = "_currentUser";
 }

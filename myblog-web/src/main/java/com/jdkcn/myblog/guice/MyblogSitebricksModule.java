@@ -31,7 +31,7 @@ import com.google.inject.servlet.RequestScoped;
 import com.google.sitebricks.SitebricksModule;
 import com.google.sitebricks.slf4j.Slf4jModule;
 import com.jdkcn.myblog.web.page.Home;
-import com.jdkcn.myblog.web.page.Login;
+import com.jdkcn.myblog.web.page.Signin;
 import com.jdkcn.myblog.web.page.admin.AddEntry;
 import com.jdkcn.myblog.web.page.admin.Dashboard;
 import com.jdkcn.myblog.web.page.admin.Entries;
@@ -52,7 +52,7 @@ public class MyblogSitebricksModule extends SitebricksModule {
     protected void configureSitebricks() {
     	install(new Slf4jModule());
         at("/").show(Home.class).in(RequestScoped.class);
-        at("/login").show(Login.class).in(RequestScoped.class);
+        at("/signin").show(Signin.class).in(RequestScoped.class);
         at("/adm").show(Dashboard.class).in(RequestScoped.class);
         at("/adm/entries").show(Entries.class).in(RequestScoped.class);
         at("/adm/entry/add").show(AddEntry.class).in(RequestScoped.class);

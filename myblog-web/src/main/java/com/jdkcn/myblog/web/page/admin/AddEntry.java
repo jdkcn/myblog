@@ -27,6 +27,8 @@
  */
 package com.jdkcn.myblog.web.page.admin;
 
+import static com.jdkcn.myblog.Constants.CURRENT_USER;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
@@ -40,7 +42,6 @@ import com.jdkcn.myblog.domain.Entry;
 import com.jdkcn.myblog.domain.User;
 import com.jdkcn.myblog.service.BlogService;
 import com.jdkcn.myblog.service.EntryService;
-import com.jdkcn.myblog.web.filter.UserLoginFilter;
 
 /**
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
@@ -97,7 +98,7 @@ public class AddEntry extends AdminLayout{
 		}
 		entry.setType(Entry.Type.ENTRY);
 		entry.setStatus(Entry.Status.PUBLISH);
-		entry.setAuthor((User)httpSession.getAttribute(UserLoginFilter.CURRENT_USER));
+		entry.setAuthor((User)httpSession.getAttribute(CURRENT_USER));
 		entryService.saveOrUpdate(entry);
 		return "/adm/entries";
 	}

@@ -40,7 +40,7 @@ import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 import com.jdkcn.myblog.guice.MyblogGuiceModule;
 import com.jdkcn.myblog.guice.MyblogSitebricksModule;
-import com.jdkcn.myblog.web.filter.UserLoginFilter;
+import com.jdkcn.myblog.web.filter.UserSigninFilter;
 
 /**
  * @author <a href="mailto:rory.cn@gmail.com">Rory, Ye</a>
@@ -63,7 +63,7 @@ public class MyblogServletContextListener extends GuiceServletContextListener {
             @Override
             protected void configureServlets() {
                 filter("/*").through(PersistFilter.class);
-                filter("/adm/*","/adm").through(UserLoginFilter.class);
+                filter("/adm/*","/adm").through(UserSigninFilter.class);
 //                serve("/test.jspx").with(TestServlet.class);
             }
         }, new MyblogGuiceModule(), new MyblogSitebricksModule());
