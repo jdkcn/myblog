@@ -27,6 +27,8 @@
  */
 package com.jdkcn.myblog.domain;
 
+import static com.jdkcn.myblog.Constants.PREFIX;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -41,7 +43,7 @@ import javax.persistence.Table;
  * @since May 12, 2010 2:15:38 PM
  * @version $Id: User.java 440 2011-05-23 15:53:05Z Rory.CN@gmail.com $
  */
-@Entity
+@Entity(name = PREFIX + ".User")
 @Table(name = BaseDomain.TABLE_PREFIX + "user")
 public class User extends BaseDomain {
 

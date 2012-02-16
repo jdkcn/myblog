@@ -27,6 +27,8 @@
  */
 package com.jdkcn.myblog.domain;
 
+import static com.jdkcn.myblog.Constants.PREFIX;
+
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -52,7 +54,7 @@ import javax.persistence.TemporalType;
  * @since May 1, 2010 10:51:04 PM
  * @version $Id: Entry.java 419 2011-05-09 15:45:42Z Rory.CN@gmail.com $
  */
-@Entity
+@Entity(name = PREFIX + ".Entry")
 @Table(name = BaseDomain.TABLE_PREFIX + "entry")
 public class Entry extends BaseDomain {
 

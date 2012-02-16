@@ -27,6 +27,7 @@
  */
 package com.jdkcn.myblog.domain;
 
+import static com.jdkcn.myblog.Constants.PREFIX;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,7 @@ import com.jdkcn.myblog.Constants;
  * @since May 12, 2010 3:28:42 PM
  * @version $Id: Blog.java 440 2011-05-23 15:53:05Z Rory.CN@gmail.com $
  */
-@Entity
+@Entity(name = PREFIX + ".Blog")
 @Table(name = BaseDomain.TABLE_PREFIX + "blog")
 public class Blog extends BaseDomain {
 

@@ -27,6 +27,7 @@
  */
 package com.jdkcn.myblog.domain;
 
+import static com.jdkcn.myblog.Constants.PREFIX;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -43,7 +44,7 @@ import javax.persistence.TemporalType;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: Comment.java 407 2011-04-29 16:30:38Z Rory.CN@gmail.com $
  */
-@Entity
+@Entity(name = PREFIX + ".Comment")
 @Table(name = BaseDomain.TABLE_PREFIX + "comment")
 public class Comment extends BaseDomain {
 

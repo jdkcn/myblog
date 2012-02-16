@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@SuppressWarnings("unchecked")
 	public User getByUsername(String username) {
-		Query query = entityManagerProvider.get().createQuery("from User u where u.username = :username");
+		Query query = entityManagerProvider.get().createQuery("from myblog.User u where u.username = :username");
 		query.setParameter("username", username);
 		List<User> users = query.getResultList();
 		if (users.isEmpty()) {
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@SuppressWarnings("unchecked")
 	public User getByEmail(String email) {
-		Query query = entityManagerProvider.get().createQuery("from User u where u.email = :email");
+		Query query = entityManagerProvider.get().createQuery("from myblog.User u where u.email = :email");
 		query.setParameter("email", email);
 		List<User> users = query.getResultList();
 		if (users.isEmpty()) {

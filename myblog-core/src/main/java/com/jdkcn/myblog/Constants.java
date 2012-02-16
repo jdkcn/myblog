@@ -46,4 +46,9 @@ public final class Constants {
      * The sign in user's key
      */
 	public static final String CURRENT_USER = "_currentUser";
+	
+	/**
+	 * The myblog system prefix
+	 */
+	public static final String PREFIX = "myblog";
 }

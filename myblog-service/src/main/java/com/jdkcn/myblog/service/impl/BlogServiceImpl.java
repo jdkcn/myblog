@@ -66,6 +66,6 @@ public class BlogServiceImpl implements BlogService {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Blog> getAllBlogs() {
-		return (List<Blog>) entityManagerProvider.get().createQuery("from Blog").getResultList();
+		return (List<Blog>) entityManagerProvider.get().createQuery("from myblog.Blog").getResultList();
 	}
 }

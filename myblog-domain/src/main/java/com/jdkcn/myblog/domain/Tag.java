@@ -27,6 +27,8 @@
  */
 package com.jdkcn.myblog.domain;
 
+import static com.jdkcn.myblog.Constants.PREFIX;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -36,7 +38,7 @@ import javax.persistence.Table;
  * @since May 13, 2010 10:22:34 PM
  * @version $Id: Tag.java 401 2011-04-28 05:43:33Z rory.cn $
  */
-@Entity
+@Entity(name = PREFIX + ".Tag")
 @Table(name = BaseDomain.TABLE_PREFIX + "tag")
 public class Tag extends BaseDomain {
 

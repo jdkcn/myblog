@@ -27,6 +27,8 @@
  */
 package com.jdkcn.myblog.domain;
 
+import static com.jdkcn.myblog.Constants.PREFIX;
+
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -49,7 +51,7 @@ import org.hibernate.annotations.SortType;
  * @since May 6, 2010 11:53:13 AM
  * @version $Id: Category.java 407 2011-04-29 16:30:38Z Rory.CN@gmail.com $
  */
-@Entity
+@Entity(name = PREFIX + ".Category")
 @Table(name = BaseDomain.TABLE_PREFIX + "category")
 public class Category extends BaseDomain implements Comparable<Category> {
 

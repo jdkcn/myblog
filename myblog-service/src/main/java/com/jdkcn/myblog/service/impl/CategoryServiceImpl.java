@@ -61,10 +61,10 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Category> getRoots(Type type) {
 		Query query = null;
 		if (type != null) {
-			query = entityManagerProvider.get().createQuery("from Category where type = :type and parent is null");
+			query = entityManagerProvider.get().createQuery("from myblog.Category where type = :type and parent is null");
 			query.setParameter("type", type);
 		} else {
-			query = entityManagerProvider.get().createQuery("from Category where parent is null");
+			query = entityManagerProvider.get().createQuery("from myblog.Category where parent is null");
 		}
 		return query.getResultList();
 	}
@@ -75,9 +75,9 @@ public class CategoryServiceImpl implements CategoryService {
 	public Category getByName(String name, String parentId) {
 		Query query = null;
 		if (StringUtils.isBlank(parentId)) {
-			query = entityManagerProvider.get().createQuery("from Category where name = :name and parent is null");
+			query = entityManagerProvider.get().createQuery("from myblog.Category where name = :name and parent is null");
 		} else {
-			query = entityManagerProvider.get().createQuery("from Category where name = :name and parent.id = :parentId");
+			query = entityManagerProvider.get().createQuery("from myblog.Category where name = :name and parent.id = :parentId");
 			query.setParameter("parentId", parentId);
 		}
 		query.setParameter("name", name);
@@ -130,10 +130,10 @@ public class CategoryServiceImpl implements CategoryService {
 		Integer order = null;
 		Query query = null;
 		if (StringUtils.isNotBlank(parentId)) {
-			query = entityManagerProvider.get().createQuery("select max(cate.order) from Category cate where cate.parent.id = :parentId");
+			query = entityManagerProvider.get().createQuery("select max(cate.order) from myblog.Category cate where cate.parent.id = :parentId");
 			query.setParameter("parentId", parentId);
 		} else {
-			query = entityManagerProvider.get().createQuery("select max(cate.order) from Category cate where cate.parent is null");
+			query = entityManagerProvider.get().createQuery("select max(cate.order) from myblog.Category cate where cate.parent is null");
 		}
 		order = (Integer) query.getSingleResult();
 		return order == null ? 0 : order;

@@ -27,6 +27,8 @@
  */
 package com.jdkcn.myblog.domain;
 
+import static com.jdkcn.myblog.Constants.PREFIX;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -37,7 +39,7 @@ import javax.persistence.Table;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: Account.java 440 2011-05-23 15:53:05Z Rory.CN@gmail.com $
  */
-@Entity
+@Entity(name = PREFIX + ".Account")
 @Table(name = BaseDomain.TABLE_PREFIX + "account")
 public class Account extends BaseDomain {
 
