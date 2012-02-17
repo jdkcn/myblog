@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 
 import com.google.inject.Inject;
+import com.google.sitebricks.headless.Reply;
 import com.google.sitebricks.http.Get;
 import com.google.sitebricks.http.Post;
 
@@ -23,12 +24,12 @@ public class Signout {
 	
 	@Get
 	@Post
-	public String logout() {
+	public Reply<?> logout() {
 		session.invalidate();
 		String refer = request.getHeader("Referer");
 		if (StringUtils.isNotBlank(refer)) {
-			return refer;
+			return Reply.saying().redirect(refer);
 		}
-		return request.getContextPath() + "/";
+		return Reply.saying().redirect(request.getContextPath() + "/");
 	}
 }

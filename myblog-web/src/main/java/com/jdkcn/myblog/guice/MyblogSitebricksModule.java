@@ -54,7 +54,7 @@ public class MyblogSitebricksModule extends SitebricksModule {
     	install(new Slf4jModule());
         at("/").show(Home.class).in(RequestScoped.class);
         at("/signin").show(Signin.class).in(RequestScoped.class);
-        at("/signout").show(Signout.class).in(RequestScoped.class);
+        at("/signout").serve(Signout.class).in(RequestScoped.class);
         at("/adm").show(Dashboard.class).in(RequestScoped.class);
         at("/adm/entries").show(Entries.class).in(RequestScoped.class);
         at("/adm/entry/add").show(AddEntry.class).in(RequestScoped.class);
