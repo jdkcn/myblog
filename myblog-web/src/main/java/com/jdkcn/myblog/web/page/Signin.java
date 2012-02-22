@@ -46,7 +46,7 @@ import com.jdkcn.myblog.service.UserService;
  * @version $Id: Login.java 413 2011-05-04 13:36:16Z rory.cn $
  */
 @Show("/WEB-INF/templates/signin.fml")
-public class Signin {
+public class Signin  extends AbstractPage {
 	
 	@Inject
 	private UserService userService;

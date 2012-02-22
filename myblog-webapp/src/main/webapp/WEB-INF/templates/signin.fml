@@ -11,10 +11,10 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 	<!-- Le styles -->
-    <link href="assets/css/bootstrap.css"" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-	<script src="assets/js/jquery-1.7.1.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
+    <link href="${contextPath}/assets/css/bootstrap.css"" rel="stylesheet">
+    <link href="${contextPath}/assets/css/bootstrap-responsive.css" rel="stylesheet">
+	<script src="${contextPath}/assets/js/jquery-1.7.1.min.js"></script>
+	<script src="${contextPath}/assets/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -26,10 +26,10 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </a>
-	          <a class="brand" href=""> Myblog</a>
+	          <a class="brand" href="https://github.com/jdkcn/myblog"> Myblog</a>
 	          <div class="nav-collapse">
 	            <ul class="nav">
-	              <li class="active"><a href="">Home</a></li>
+	              <li class="active"><a href="${contextPath}">Home</a></li>
 	              <li><a href="#about">About</a></li>
 	            </ul>
 	          </div>

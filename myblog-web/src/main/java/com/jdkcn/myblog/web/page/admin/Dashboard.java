@@ -36,6 +36,6 @@ import com.google.sitebricks.rendering.Decorated;
  */
 @Show("/WEB-INF/templates/adm/dashboard.html")
 @Decorated
-public class Dashboard  extends AdminLayout{
+public class Dashboard extends AdminLayout{
 
 }

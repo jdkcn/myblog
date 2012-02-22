@@ -27,6 +27,8 @@
  */
 package com.jdkcn.myblog.web.page.admin;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.google.inject.Inject;
 import com.google.sitebricks.Show;
 import com.jdkcn.myblog.domain.Blog;
@@ -41,8 +43,15 @@ public abstract class AdminLayout {
 	
 	@Inject
 	private BlogService blogService;
+	
+	@Inject
+	private HttpServletRequest request;
 
 	private Blog blog;
+	
+	public String getContextPath() {
+		return request.getContextPath();
+	}
 
 	public Blog getBlog() {
 		if (blog == null) {
