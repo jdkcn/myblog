@@ -52,6 +52,8 @@ import com.jdkcn.myblog.util.PaginationSupport;
 import com.jdkcn.myblog.util.Range;
 import com.jdkcn.myblog.util.Sorter;
 
+import static com.jdkcn.myblog.Constants.*;
+
 /**
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: EntryServiceImpl.java 427 2011-05-13 09:28:19Z rory.cn $
@@ -112,7 +114,7 @@ public class EntryServiceImpl implements EntryService {
 	 */
 	@SuppressWarnings("unchecked")
 	public Entry getByName(String blogId, String name) {
-		Query query = entityManagerProvider.get().createQuery("from Entry entry where entry.blog.id = :blogId and entry.name = :name");
+		Query query = entityManagerProvider.get().createQuery("from " + PREFIX + ".Entry entry where entry.blog.id = :blogId and entry.name = :name");
 		query.setParameter("blogId", blogId);
 		query.setParameter("name", name);
 		List<Entry> entries = query.getResultList();

@@ -36,6 +36,7 @@ import javax.persistence.Query;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.jdkcn.myblog.Constants;
 import com.jdkcn.myblog.domain.Category;
 import com.jdkcn.myblog.hibernate.Condition;
 
@@ -98,7 +99,7 @@ public class EntryCondition implements Condition {
 	 */
 	public String decorateHql() {
 		StringBuilder hqlBuilder = new StringBuilder();
-		hqlBuilder.append("from Entry");
+		hqlBuilder.append("from ").append(Constants.PREFIX).append(".Entry");
 		boolean hasCondition = false;
 		if (!isBlank()) {
 			hqlBuilder.append(" where");
