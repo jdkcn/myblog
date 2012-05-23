@@ -22,16 +22,16 @@ public class FlashMapFilter extends OncePerRequestFilter {
 	 */
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 	    if (session != null) {
-	      Map<String, ?> flash = (Map<String, ?>) session.getAttribute(FlashMap.FLASH_MAP_ATTRIBUTE);
+	      @SuppressWarnings("unchecked")
+		Map<String, ?> flash = (Map<String, ?>) session.getAttribute(FlashMap.FLASH_MAP_ATTRIBUTE);
 	      if (flash != null) {
 	        for (Map.Entry<String, ?> entry : flash.entrySet()) {
 	          Object currentValue = request.getAttribute(entry.getKey());
 	          if (currentValue == null) {
 	            request.setAttribute(entry.getKey(), entry.getValue());
-	          }           
+	          }
 	        }
 	        session.removeAttribute(FlashMap.FLASH_MAP_ATTRIBUTE);
 	      }

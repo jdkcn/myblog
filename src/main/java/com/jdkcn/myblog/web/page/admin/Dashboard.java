@@ -27,6 +27,7 @@
  */
 package com.jdkcn.myblog.web.page.admin;
 
+import com.google.sitebricks.At;
 import com.google.sitebricks.Show;
 import com.google.sitebricks.rendering.Decorated;
 
@@ -34,8 +35,9 @@ import com.google.sitebricks.rendering.Decorated;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: Dashboard.java 424 2011-05-12 07:42:10Z rory.cn $
  */
-@Show("/WEB-INF/templates/adm/dashboard.html")
+@Show("/WEB-INF/templates/adm/dashboard.mvel")
 @Decorated
+@At("/adm")
 public class Dashboard extends AdminLayout{
 
 }

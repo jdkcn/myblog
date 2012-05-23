@@ -38,7 +38,7 @@ import com.jdkcn.myblog.service.BlogService;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: AdminLayout.java 424 2011-05-12 07:42:10Z rory.cn $
  */
-@Show("/WEB-INF/templates/adm/layout.html")
+@Show("/WEB-INF/templates/adm/layout.mvel")
 public abstract class AdminLayout {
 	
 	@Inject

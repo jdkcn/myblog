@@ -34,6 +34,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 
 import com.google.inject.Inject;
+import com.google.sitebricks.At;
 import com.google.sitebricks.Show;
 import com.google.sitebricks.http.Get;
 import com.google.sitebricks.http.Post;
@@ -47,8 +48,9 @@ import com.jdkcn.myblog.service.EntryService;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: AddEntry.java 427 2011-05-13 09:28:19Z rory.cn $
  */
-@Show("/WEB-INF/templates/adm/addentry.html")
+@Show("/WEB-INF/templates/adm/addentry.mvel")
 @Decorated
+@At("/adm/entry/add")
 public class AddEntry extends AdminLayout{
 
 	@Inject

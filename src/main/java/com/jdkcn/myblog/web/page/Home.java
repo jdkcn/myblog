@@ -28,6 +28,7 @@
 package com.jdkcn.myblog.web.page;
 
 import com.google.inject.Inject;
+import com.google.sitebricks.At;
 import com.google.sitebricks.Show;
 import com.google.sitebricks.http.Get;
 import com.jdkcn.myblog.domain.Blog;
@@ -36,7 +37,8 @@ import com.jdkcn.myblog.domain.Category.Type;
 import com.jdkcn.myblog.guice.MyblogInitializer;
 import com.jdkcn.myblog.service.CategoryService;
 
-@Show("/WEB-INF/templates/home.html")
+@Show("/WEB-INF/templates/home.mvel")
+@At("/")
 public class Home {
 	
 	@Inject

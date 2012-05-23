@@ -52,12 +52,13 @@ public class MyblogSitebricksModule extends SitebricksModule {
     @Override
     protected void configureSitebricks() {
     	install(new Slf4jModule());
-        at("/").show(Home.class).in(RequestScoped.class);
-        at("/signin").show(Signin.class).in(RequestScoped.class);
-        at("/signout").serve(Signout.class).in(RequestScoped.class);
-        at("/adm").show(Dashboard.class).in(RequestScoped.class);
-        at("/adm/entries").show(Entries.class).in(RequestScoped.class);
-        at("/adm/entry/add").show(AddEntry.class).in(RequestScoped.class);
+    	scan(Home.class.getPackage());
+//        at("/").show(Home.class).in(RequestScoped.class);
+//        at("/signin").show(Signin.class).in(RequestScoped.class);
+//        at("/signout").serve(Signout.class).in(RequestScoped.class);
+//        at("/adm").show(Dashboard.class).in(RequestScoped.class);
+//        at("/adm/entries").show(Entries.class).in(RequestScoped.class);
+//        at("/adm/entry/add").show(AddEntry.class).in(RequestScoped.class);
 //        at("/index.html").show(Home.class).in(RequestScoped.class);
 //        embed(ChildrenCategory.class).as("ChildrenCategory");
 //        at("/adm/login.jspx").show(Login.class).in(RequestScoped.class);

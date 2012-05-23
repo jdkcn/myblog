@@ -30,6 +30,7 @@ package com.jdkcn.myblog.web.page.admin;
 import java.util.List;
 
 import com.google.inject.Inject;
+import com.google.sitebricks.At;
 import com.google.sitebricks.Show;
 import com.google.sitebricks.http.Get;
 import com.google.sitebricks.rendering.Decorated;
@@ -45,8 +46,9 @@ import com.jdkcn.myblog.util.Sorter;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: Entries.java 431 2011-05-16 09:05:31Z rory.cn $
  */
-@Show("/WEB-INF/templates/adm/entries.html")
+@Show("/WEB-INF/templates/adm/entries.mvel")
 @Decorated
+@At("/adm/entries")
 public class Entries extends AdminLayout{
 
 	private EntryService entryService;
