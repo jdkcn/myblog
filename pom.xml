@@ -111,6 +111,9 @@
                         <exclude>**/*.hsqldb_mem</exclude>
                         <exclude>**/*.mysql</exclude>
                         <exclude>**/*.postgresql</exclude>
+                        <exclude>**/.gitignore</exclude>
+                        <exclude>**/README</exclude>
+                        <exclude>**/*.zargo</exclude>
                         <exclude>**/*.sample</exclude>
                         <exclude>**/*.js</exclude>
                         <exclude>**/*.css</exclude>
@@ -135,7 +138,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>7.4.0.v20110414</version>
                 <configuration>
-                    <contextPath>/</contextPath>
+                    <contextPath>/myblog</contextPath>
                     <overrideWebXml>jetty-web.xml</overrideWebXml>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
