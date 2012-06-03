@@ -1,0 +1,56 @@
+<html>
+<head>
+	@Require
+	<script type="text/javascript" charset="utf-8" src="${contextPath}/kindeditor/kindeditor.js?ver=3.5.4"></script>
+	@Require
+	<script>
+			KE.show({
+				id : 'content',
+				afterCreate : function(id) {
+					KE.event.ctrl(document, 13, function() {
+						KE.sync(id);
+						//document.forms['example'].submit();
+					});
+					KE.event.ctrl(KE.g[id].iframeDoc, 13, function() {
+						KE.sync(id);
+						//document.forms['example'].submit();
+					});
+				}
+			});
+	</script>
+</head>
+<body>
+        <div class="row">
+            <div class="span10 offset1">
+                <form class="form-horizontal" action="${contextPath}/adm/entry/${entry.id}" method="post">
+                <fieldset>
+                    <legend>Entry Detail</legend>
+                    <div class="control-group">
+                        <label class="control-label" for="title">Title</label>
+                        <div class="controls">
+                            <input type="text" class="input-xlarge" id="title" name="entry.title" value="${entry.title}">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="name">Name</label>
+                        <div class="controls">
+                            <input type="text" class="input-xlarge" id="name" name="entry.name" value="${entry.name}">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="content">Content</label>
+                        <div class="controls">
+                            <textarea rows="10" cols="50" id="content" style="width:700px;height:300px;" name="entry.content">${entry.content}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+		            <button class="btn btn-primary" type="submit">Save</button>
+		            <button class="btn" type="reset">Cancel</button>
+		    </div>
+                </fieldset>
+                </form>
+            </div>
+        </div>
+        
+</body>
+</html>
