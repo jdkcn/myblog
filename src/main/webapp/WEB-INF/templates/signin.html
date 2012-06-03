@@ -38,15 +38,14 @@
 	    </div>
       <div class="row">
 	      <div class="span8 offset2">
-	      	<#if errorMessage??>
+                        @ShowIf(errorMessage != null)
 			<div class="alert alert-error">
 			  <strong>!!</strong> Sign in failed, Please check your user and password.
 			</div>
-			<#else>
+                        @ShowIf(errorMessage == null)
 			<div class="alert">
 			  <strong>Warning!</strong> Please login.
 			</div>
-			</#if>
 			<form class="form-horizontal" action="signin" method="post">
 		        <fieldset>
 		          <legend>Sign in Form</legend>
