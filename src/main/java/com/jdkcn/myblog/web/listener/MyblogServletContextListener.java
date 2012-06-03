@@ -38,8 +38,8 @@ import com.google.inject.persist.PersistFilter;
 import com.google.inject.persist.jpa.JpaPersistModule;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
+import com.google.sitebricks.slf4j.Slf4jModule;
 import com.jdkcn.myblog.guice.MyblogGuiceModule;
-import com.jdkcn.myblog.guice.MyblogSitebricksModule;
 import com.jdkcn.myblog.web.filter.UserSigninFilter;
 
 /**
@@ -56,7 +56,7 @@ public class MyblogServletContextListener extends GuiceServletContextListener {
      */
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(new JpaPersistModule("myblogUnit"), new ServletModule(){
+        return Guice.createInjector(new Slf4jModule(), new JpaPersistModule("myblogUnit"), new ServletModule(){
             /** {@inheritDoc}
              * @see com.google.inject.servlet.ServletModule#configureServlets()
              */
@@ -64,9 +64,8 @@ public class MyblogServletContextListener extends GuiceServletContextListener {
             protected void configureServlets() {
                 filter("/*").through(PersistFilter.class);
                 filter("/adm/*","/adm").through(UserSigninFilter.class);
-//                serve("/test.jspx").with(TestServlet.class);
             }
-        }, new MyblogGuiceModule(), new MyblogSitebricksModule());
+        }, new MyblogGuiceModule());
     }
     
     /** {@inheritDoc}

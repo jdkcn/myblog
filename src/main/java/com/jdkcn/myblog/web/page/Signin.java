@@ -46,7 +46,7 @@ import com.jdkcn.myblog.service.UserService;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: Login.java 413 2011-05-04 13:36:16Z rory.cn $
  */
-@Show("/WEB-INF/templates/signin.mvel")
+@Show("/WEB-INF/templates/signin.html")
 @At("/signin")
 public class Signin  extends AbstractPage {
 	

@@ -48,7 +48,7 @@ import com.jdkcn.myblog.service.EntryService;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: AddEntry.java 427 2011-05-13 09:28:19Z rory.cn $
  */
-@Show("/WEB-INF/templates/adm/addentry.mvel")
+@Show("/WEB-INF/templates/adm/addentry.html")
 @Decorated
 @At("/adm/entry/add")
 public class AddEntry extends AdminLayout{

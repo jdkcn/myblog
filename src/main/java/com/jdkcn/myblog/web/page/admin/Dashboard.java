@@ -35,7 +35,7 @@ import com.google.sitebricks.rendering.Decorated;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id: Dashboard.java 424 2011-05-12 07:42:10Z rory.cn $
  */
-@Show("/WEB-INF/templates/adm/dashboard.mvel")
+@Show("/WEB-INF/templates/adm/dashboard.html")
 @Decorated
 @At("/adm")
 public class Dashboard extends AdminLayout{

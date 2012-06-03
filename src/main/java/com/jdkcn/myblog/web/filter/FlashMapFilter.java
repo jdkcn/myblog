@@ -25,7 +25,7 @@ public class FlashMapFilter extends OncePerRequestFilter {
 		HttpSession session = request.getSession(false);
 	    if (session != null) {
 	      @SuppressWarnings("unchecked")
-		Map<String, ?> flash = (Map<String, ?>) session.getAttribute(FlashMap.FLASH_MAP_ATTRIBUTE);
+	      Map<String, ?> flash = (Map<String, ?>) session.getAttribute(FlashMap.FLASH_MAP_ATTRIBUTE);
 	      if (flash != null) {
 	        for (Map.Entry<String, ?> entry : flash.entrySet()) {
 	          Object currentValue = request.getAttribute(entry.getKey());

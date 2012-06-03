@@ -34,29 +34,30 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
+import com.google.sitebricks.SitebricksModule;
+import com.jdkcn.myblog.web.page.Home;
 
 /**
  * @author <a href="mailto:rory.cn@gmail.com">Rory, Ye</a>
  * @since May 10, 2010 11:28:26 AM
  * @version $Id: MyblogGuiceModule.java 413 2011-05-04 13:36:16Z rory.cn $
  */
-public class MyblogGuiceModule extends AbstractModule {
+public class MyblogGuiceModule extends SitebricksModule {
 	
 	private final Logger logger = LoggerFactory.getLogger(MyblogGuiceModule.class);
 
-    /** {@inheritDoc}
-     * @see com.google.inject.AbstractModule#configure()
-     */
+    
     @Override
-    protected void configure() {
+    protected void configureSitebricks() {
     	install(new ServiceModule());
-        bind(MyblogInitializer.class).in(Singleton.class);
-        Properties properties = loadProperties("/config.properties");
-        Names.bindProperties(binder(), properties);
+    	bind(MyblogInitializer.class).in(Singleton.class);
+    	Properties properties = loadProperties("/config.properties");
+    	Names.bindProperties(binder(), properties);
+    	scan(Home.class.getPackage());
     }
+    
     
     /**
      * 

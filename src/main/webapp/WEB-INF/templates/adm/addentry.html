@@ -20,30 +20,39 @@
 	</script>
 </head>
 <body>
-		<div class="innertube">
-			<h2>Add Entry</h2>
-			<form action="/adm/entry/add" method="post">
-			<fieldset>
-				<legend>Entry info</legend>
-				<input type="hidden" name="blogId" value="${blog.id}"/>
-				<div>
-					<label>Title</label>
-					<input id="title" name="entry.title" type="text" value="" />
-				</div>
-				<div>
-					<label>Name</label>
-					<input id="name" name="entry.name" type="text" value="" />
-				</div>
-				<div>
-					<label>Content</label>
-					<textarea rows="10" cols="50" id="content" style="width:700px;height:300px;" name="entry.content">
-					</textarea>
-				</div>
-				<div>
-					<input type="submit" value="Add" />
-				</div>
-			</fieldset>
-			</form>
-		</div>
+        <div class="row">
+            <div class="span10 offset1">
+                <form class="form-horizontal" action="${contextPath}/adm/entry/add" method="post">
+                <fieldset>
+                    <legend>Entry Detail</legend>
+                    <div class="control-group">
+                        <label class="control-label" for="title">Title</label>
+                        <div class="controls">
+                            <input type="hidden" name="blogId" value="${blog.id}"/>
+                            <input type="text" class="input-xlarge" id="title" name="entry.title">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="name">Name</label>
+                        <div class="controls">
+                            <input type="text" class="input-xlarge" id="name" name="entry.name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="content">Content</label>
+                        <div class="controls">
+                            <textarea rows="10" cols="50" id="content" style="width:700px;height:300px;" name="entry.content">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+		            <button class="btn btn-primary" type="submit">Save</button>
+		            <button class="btn" type="reset">Cancel</button>
+		    </div>
+                </fieldset>
+                </form>
+            </div>
+        </div>
+        
 </body>
 </html>

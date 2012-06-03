@@ -37,7 +37,7 @@ import com.jdkcn.myblog.domain.Category.Type;
 import com.jdkcn.myblog.guice.MyblogInitializer;
 import com.jdkcn.myblog.service.CategoryService;
 
-@Show("/WEB-INF/templates/home.mvel")
+@Show("/WEB-INF/templates/home.html")
 @At("/")
 public class Home {
 	
