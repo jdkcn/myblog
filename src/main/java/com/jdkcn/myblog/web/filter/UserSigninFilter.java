@@ -35,6 +35,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.google.inject.Singleton;
 
 import static com.jdkcn.myblog.Constants.*;
@@ -54,6 +56,14 @@ public class UserSigninFilter extends OncePerRequestFilter{
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if (session == null || session.getAttribute(CURRENT_USER) == null) {
+			String uri = request.getRequestURI();
+			if (StringUtils.isNotBlank(uri) && StringUtils.isNotBlank(request.getQueryString())) {
+				uri = uri + "?" + request.getQueryString();
+			}
+			if (StringUtils.isBlank(uri)) {
+				uri = request.getHeader("Referer");
+			}
+			session.setAttribute(RETURN_URL, uri);
 			response.sendRedirect(request.getContextPath() + "/signin");
 			return;
 		}

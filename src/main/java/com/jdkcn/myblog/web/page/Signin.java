@@ -27,7 +27,7 @@
  */
 package com.jdkcn.myblog.web.page;
 
-import static com.jdkcn.myblog.Constants.CURRENT_USER;
+import static com.jdkcn.myblog.Constants.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -103,6 +103,10 @@ public class Signin  extends AbstractPage {
 		User user = userService.getByUsername(username);
 		if (user != null && user.getPassword().equals(password)) {
 			session.setAttribute(CURRENT_USER, user);
+			String returnUrl = (String) session.getAttribute(RETURN_URL);
+			if (StringUtils.isNotBlank(returnUrl)) {
+				return returnUrl;
+			}
 			return request.getContextPath() + "/adm";
 		}
 		errorMessage = "bad Username or Password";

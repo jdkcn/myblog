@@ -43,9 +43,14 @@ public final class Constants {
     public static final int DEFAULT_PAGE_SIZE = 20;
     
     /**
-     * The sign in user's key
+     * The sign in user's key {@code _currentUser}
      */
 	public static final String CURRENT_USER = "_currentUser";
+	
+	/**
+	 * The url key in session after login {@code _returnUrl}
+	 */
+	public static final String RETURN_URL = "_returnUrl";
 	
 	/**
 	 * The myblog system prefix

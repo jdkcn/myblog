@@ -44,11 +44,11 @@ import javax.servlet.http.HttpSession;
 public abstract class AdminLayout {
 
     @Inject
-    private BlogService blogService;
+    protected BlogService blogService;
     @Inject
-    private HttpServletRequest request;
+    protected HttpServletRequest request;
     @Inject
-    private HttpSession session;
+    protected HttpSession session;
     
     private Blog blog;
     

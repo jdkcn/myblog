@@ -10,22 +10,16 @@
                                     <th>Title</th><th>Author</th><th>Categories</th><th>Tags</th><th>Date</th><th>Action</th>
 				</tr>
                             </thead>
-                            <tbody>
+                <tbody>
 				@Repeat(items=entries, var="entry")
 				<tr>
-                                    <td>${entry.title}</td><td>${entry.author.nickname}</td><td>Categories</td><td>Tags</td><td>Date</td>
-                                    <td>
-                                        <div class="btn-group">
-	  					<a class="btn btn-primary dropdown-toggle" href="#" data-toggle="dropdown">
-	  						<i class="icon-file icon-white"></i> Actions <span class="caret"></span>
-	  					</a>
-	  					<ul class="dropdown-menu">
-	  						<li><a href="/adm/entry/${entry.id}">Edit</a></li>
-	  					</ul>
-	  				</div>
-                                    </td>
+                             <td>${entry.title}</td><td>${entry.author.nickname}</td><td>Categories</td><td>Tags</td><td>Date</td>
+                             <td>
+								<a class="btn btn-primary" href="/adm/entry/${entry.id}"> <i class="icon-file icon-white"></i> Edit </a>
+								<a class="btn btn-danger" href="/adm/entry/${entry.id}?action=delete"> <i class="icon-remove icon-white"></i> Delete </a>
+                             </td>
 				</tr>
-                            </tbody>
+                  </tbody>
 			</table>
 		</div>
 </body>

@@ -26,6 +26,16 @@ public class EditEntry extends AdminLayout {
 	private EntryService entryService;
 	
 	private Entry entry;
+	
+	private String action;
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
 
 	public Entry getEntry() {
 		return entry;
@@ -46,7 +56,7 @@ public class EditEntry extends AdminLayout {
 			entry.setExcerpt(entry.getContent());
 		}
 		entryService.saveOrUpdate(entry);
-		return "/adm/entries";
+		return request.getContextPath() + "/adm/entries";
 	}
 	
 }

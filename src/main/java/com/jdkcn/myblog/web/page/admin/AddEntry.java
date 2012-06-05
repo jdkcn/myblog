@@ -29,8 +29,6 @@ package com.jdkcn.myblog.web.page.admin;
 
 import static com.jdkcn.myblog.Constants.CURRENT_USER;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.lang.StringUtils;
 
 import com.google.inject.Inject;
@@ -41,7 +39,6 @@ import com.google.sitebricks.http.Post;
 import com.google.sitebricks.rendering.Decorated;
 import com.jdkcn.myblog.domain.Entry;
 import com.jdkcn.myblog.domain.User;
-import com.jdkcn.myblog.service.BlogService;
 import com.jdkcn.myblog.service.EntryService;
 
 /**
@@ -55,12 +52,6 @@ public class AddEntry extends AdminLayout{
 
 	@Inject
 	private EntryService entryService;
-	
-	@Inject
-	private BlogService blogService;
-	
-	@Inject
-	private HttpSession httpSession;
 	
 	private Entry entry = new Entry();
 	
@@ -91,7 +82,7 @@ public class AddEntry extends AdminLayout{
 		if (StringUtils.isNotBlank(entry.getName())) {
 			Entry exist = entryService.getByName(blogId, entry.getName());
 			if (exist != null) {
-				return "/adm/entry/add";
+				return request.getContextPath() + "/adm/entry/add";
 			}
 		}
 		entry.setBlog(blogService.get(blogId));
@@ -100,8 +91,8 @@ public class AddEntry extends AdminLayout{
 		}
 		entry.setType(Entry.Type.ENTRY);
 		entry.setStatus(Entry.Status.PUBLISH);
-		entry.setAuthor((User)httpSession.getAttribute(CURRENT_USER));
+		entry.setAuthor((User)session.getAttribute(CURRENT_USER));
 		entryService.saveOrUpdate(entry);
-		return "/adm/entries";
+		return request.getContextPath() + "/adm/entries";
 	}
 }
