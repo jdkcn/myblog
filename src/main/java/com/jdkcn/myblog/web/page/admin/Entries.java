@@ -60,6 +60,16 @@ public class Entries extends AdminLayout{
 	
 	private List<Entry> entries;
 	
+	private boolean showAll = false;
+	
+	public boolean isShowAll() {
+		return showAll;
+	}
+
+	public void setShowAll(boolean showAll) {
+		this.showAll = showAll;
+	}
+
 	@Inject
 	public Entries(EntryService entryService) {
 		this.entryService = entryService;
@@ -88,10 +98,13 @@ public class Entries extends AdminLayout{
 	public void setSize(Integer size) {
 		this.size = size;
 	}
-
+	
 	@Get
 	public void get() {
 		EntryCondition condition = new EntryCondition();
+		if (!showAll) {
+			condition.setExcludeStatus(Entry.Status.DELETED);
+		}
 		if (size == null) {
 			size = Constants.DEFAULT_PAGE_SIZE;
 		}

@@ -27,16 +27,6 @@ public class EditEntry extends AdminLayout {
 	
 	private Entry entry;
 	
-	private String action;
-
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
-	}
-
 	public Entry getEntry() {
 		return entry;
 	}
@@ -52,10 +42,15 @@ public class EditEntry extends AdminLayout {
 	
 	@Post
 	public String save() {
-		if (StringUtils.isBlank(entry.getExcerpt())) {
-			entry.setExcerpt(entry.getContent());
+		//entry = entryService.get(id);
+		if (entry == null) {
+//			FlashMap.setErrorMessage("No entry found with id:" + id);
+		} else {
+			if (StringUtils.isBlank(entry.getExcerpt())) {
+				entry.setExcerpt(entry.getContent());
+			}
+			entryService.saveOrUpdate(entry);
 		}
-		entryService.saveOrUpdate(entry);
 		return request.getContextPath() + "/adm/entries";
 	}
 	

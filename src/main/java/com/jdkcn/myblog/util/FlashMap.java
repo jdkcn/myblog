@@ -33,6 +33,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.jdkcn.myblog.web.filter.FlashMapFilter;
+
 /**
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  * @version $Id$
@@ -55,7 +57,7 @@ public class FlashMap {
 	}
 
 	public static void put(String key, Object value) {
-//		getCurrent(getRequest(RequestContextHolder.currentRequestAttributes())).put(key, value);
+		getCurrent(FlashMapFilter.getHttpServletRequest()).put(key, value);
 	}
 
 	public static void setInfoMessage(String info) {

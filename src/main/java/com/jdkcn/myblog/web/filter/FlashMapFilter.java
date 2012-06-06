@@ -44,6 +44,12 @@ import com.jdkcn.myblog.util.FlashMap;
  */
 public class FlashMapFilter extends OncePerRequestFilter {
 
+	private static final ThreadLocal<HttpServletRequest> originalRequest = new ThreadLocal<HttpServletRequest>();
+	
+	public static HttpServletRequest getHttpServletRequest() {
+		return originalRequest.get();
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -64,7 +70,6 @@ public class FlashMapFilter extends OncePerRequestFilter {
 	      }
 	    }
 	    filterChain.doFilter(request, response);
-
 	}
 
 }

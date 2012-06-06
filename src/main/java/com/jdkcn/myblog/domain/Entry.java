@@ -318,7 +318,7 @@ public class Entry extends BaseDomain {
     }
     
     public enum Status {
-        DRAFT("draft"), PUBLISH("publish");
+        DRAFT("draft"), PUBLISH("publish"), DELETED("deleted");
 
         private String code;
 

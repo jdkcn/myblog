@@ -27,6 +27,7 @@
  */
 package com.jdkcn.myblog.condition;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.jdkcn.myblog.Constants;
 import com.jdkcn.myblog.domain.Category;
+import com.jdkcn.myblog.domain.Entry.Status;
 import com.jdkcn.myblog.hibernate.Condition;
 
 /**
@@ -54,6 +56,29 @@ public class EntryCondition implements Condition {
 	
 	private List<Category> categories;
 	
+	private Status excludeStatus;
+	
+	private List<Status> includeStatuses;
+	
+	public Status getExcludeStatus() {
+		return excludeStatus;
+	}
+
+	public void setExcludeStatus(Status excludeStatus) {
+		this.excludeStatus = excludeStatus;
+	}
+
+	public List<Status> getIncludeStatuses() {
+		if (includeStatuses == null) {
+			includeStatuses = new ArrayList<Status>();
+		}
+		return includeStatuses;
+	}
+
+	public void setIncludeStatuses(List<Status> includeStatuses) {
+		this.includeStatuses = includeStatuses;
+	}
+
 	public String getKeyword() {
 		return keyword;
 	}
@@ -91,6 +116,12 @@ public class EntryCondition implements Condition {
 		if (categories != null && !categories.isEmpty()) {
 			return false;
 		}
+		if (excludeStatus != null) {
+			return false;
+		}
+		if (includeStatuses != null && !includeStatuses.isEmpty()) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -119,6 +150,22 @@ public class EntryCondition implements Condition {
 			}
 			hqlBuilder.append(" category.id = :categoryId");
 			queryParamMap.put("categoryId", category.getId());
+			hasCondition = true;
+		}
+		if (excludeStatus != null) {
+			if (hasCondition) {
+				hqlBuilder.append(" and");
+			}
+			hqlBuilder.append(" status != :excludeStatus");
+			queryParamMap.put("excludeStatus", excludeStatus);
+			hasCondition = true;
+		}
+		if (!getIncludeStatuses().isEmpty()) {
+			if (hasCondition) {
+				hqlBuilder.append(" and");
+			}
+			hqlBuilder.append(" status in :includeStatuses");
+			queryParamMap.put("includeStatuses", getIncludeStatuses());
 			hasCondition = true;
 		}
 		return hqlBuilder.toString();
