@@ -244,12 +244,12 @@
         <dependency>
             <groupId>com.google.sitebricks</groupId>
             <artifactId>sitebricks</artifactId>
-            <version>0.8.5</version>
+            <version>0.8.7-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.google.sitebricks</groupId>
             <artifactId>sitebricks-slf4j</artifactId>
-            <version>0.8.5</version>
+            <version>0.8.7-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>

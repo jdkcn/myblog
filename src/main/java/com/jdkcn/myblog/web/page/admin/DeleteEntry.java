@@ -2,7 +2,9 @@ package com.jdkcn.myblog.web.page.admin;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import com.google.sitebricks.At;
 import com.google.sitebricks.headless.Reply;
+import com.google.sitebricks.headless.Service;
 import com.google.sitebricks.http.Get;
 import com.google.sitebricks.http.Post;
 import com.jdkcn.myblog.domain.Entry;
@@ -14,6 +16,8 @@ import com.jdkcn.myblog.util.FlashMap;
  * @author <a href="mailto:rory.cn@gmail.com">Rory</a>
  *
  */
+@At("/adm/entry/delete/:id")
+@Service
 public class DeleteEntry extends AdminLayout {
 
 	@Inject

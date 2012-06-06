@@ -36,11 +36,8 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
-import com.google.inject.servlet.RequestScoped;
 import com.google.sitebricks.SitebricksModule;
 import com.jdkcn.myblog.web.page.Home;
-import com.jdkcn.myblog.web.page.Signout;
-import com.jdkcn.myblog.web.page.admin.DeleteEntry;
 
 /**
  * @author <a href="mailto:rory.cn@gmail.com">Rory, Ye</a>
@@ -59,8 +56,6 @@ public class MyblogGuiceModule extends SitebricksModule {
     	Properties properties = loadProperties("/config.properties");
     	Names.bindProperties(binder(), properties);
     	scan(Home.class.getPackage());
-    	at("/signout").serve(Signout.class).in(RequestScoped.class);
-    	at("/adm/entry/delete/:id").serve(DeleteEntry.class).in(RequestScoped.class);
     }
     
     
